@@ -11,3 +11,21 @@ The typical cost is aroung $0.09 per 1000 calls for a single weather station, wh
 If you have any suggestions or can clean up my code then thanks in advance!
 
 The main confusion I have is how RainMachine stores time. That is why the code has references to both local and UTC time, but I am logging with local so that my data matches that from services such as OpenWeatherMaps.
+
+Installation
+============
+In the RainMachine UI, for to Settings --> Weather --> User uploaded
+Select "Add New" and browse to the willyweather.py file and then upload.
+You then need to enter your WillyWeather API key.
+The hit REFRESH a few times and a list of closest stations should appear magically in the UI.
+Enter the one you want and SAVE.
+If nothing saves, then press the DEFAULTS button to populate the default value, then change to your own.
+Sorry for the convoluted instructions, but this is the only way I could get it to save the Station ID properly.
+
+Note for Windows Users
+======================
+If you upload from Windows you will get an error.
+Renaming the file to willyweather.txt will result in a successful upload.
+But... if you then reboot RainMachine you will lose the parser (sad face).
+
+You can only get this to work from a Linux or similar OS.
