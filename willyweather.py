@@ -64,7 +64,7 @@ class WillyWeather(RMParser):
 
     defaultParams = {
               "apiKey": None,
-              "stationID": 12281,
+              "stationID": 13960,
               "_nearbyStationsIDList": []
               }
 
