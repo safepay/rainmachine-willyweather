@@ -12,9 +12,20 @@ If you have any suggestions or can clean up my code then thanks in advance!
 
 The main confusion I have is how RainMachine stores time. That is why the code has references to both local and UTC time, but I am logging with local so that my data matches that from services such as OpenWeatherMaps.
 
+Register for the Willyweather API
+=================================
+Go to https://www.willyweather.com.au/info/api.html
+Select "Single Location" and click "Next"
+Select "Show sub-items" next to "Weather" to reveal the sub-menu
+Tick "Observational"
+Select "Show sub-items" next to "Forecasts" to reveal the sub-menu
+Tick "Weather", "Temperature", "Wind" and "Rainfall" and click "Next"
+Complete the process with your own information, including your credit card.
+
+
 Installation
 ============
-In the RainMachine UI, for to Settings --> Weather --> User uploaded
+In the RainMachine UI, go to Settings --> Weather --> User uploaded
 Select "Add New" and browse to the willyweather.py file and then upload.
 You then need to enter your WillyWeather API key.
 The hit REFRESH a few times and a list of closest stations should appear magically in the UI.
