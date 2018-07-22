@@ -1,5 +1,5 @@
 # Rainmachine Willyweather Australia Parser
-A parser for the RainMachine smart watering system using the API from www.willyweather.com.au
+A parser for the RainMachine smart watering system using the API from www.willyweather.com.au which provides a commercial Json API for the Australian Bureau of Meteorology data.
 
 Note that I am not a professional (or even amateur!!) programmer.
 I wrote this because of the lack of local Australian support from the RainMachine system.
