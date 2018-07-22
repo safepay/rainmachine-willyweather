@@ -31,7 +31,7 @@
 #
 # Select "Single Location" from the options.
 # Select "Observational" and "Forecasts" from the sub-menu under Weather.
-# This should give a $0.09 cost per 1000 requests.
+# This should give a $0.05 cost per 1000 requests.
 #
 # Enter your API key in the UI and Save, then Refresh.
 # In the UI, a list of nearby stations should appear, based on your
@@ -118,7 +118,7 @@ class WillyWeather(RMParser):
 
         URLParams = [
             ("observational", "true"),
-            ("forecasts", "weather,temperature,rainfall,wind,uv"),
+            ("forecasts", "weather,temperature,rainfall,wind"),
             ("days", self.noDays),
             {"units", "speed:m/s"}
         ]
