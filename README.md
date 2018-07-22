@@ -12,19 +12,23 @@ If you have any suggestions or can clean up my code then thanks in advance!
 
 The main confusion I have is how RainMachine stores time. That is why the code has references to both local and UTC time, but I am logging with local so that my data matches that from services such as OpenWeatherMaps.
 
-Register for the Willyweather API
-=================================
-Go to https://www.willyweather.com.au/info/api.html
-Select "Single Location" and click "Next"
-Select "Show sub-items" next to "Weather" to reveal the sub-menu
-Tick "Observational"
-Select "Show sub-items" next to "Forecasts" to reveal the sub-menu
-Tick "Weather", "Temperature", "Wind" and "Rainfall" and click "Next"
+## Register for the Willyweather API
+Go to https://www.willyweather.com.au/info/api.html.
+
+Select "Single Location" and click "Next".
+
+Select "Show sub-items" next to "Weather" to reveal the sub-menu.
+
+Tick "Observational".
+
+Select "Show sub-items" next to "Forecasts" to reveal the sub-menu.
+
+Tick "Weather", "Temperature", "Wind" and "Rainfall" and click "Next".
+
 Complete the process with your own information, including your credit card.
 
 
-Installation
-============
+## Installation
 In the RainMachine UI, go to Settings --> Weather --> User uploaded
 Select "Add New" and browse to the willyweather.py file and then upload.
 You then need to enter your WillyWeather API key.
@@ -33,8 +37,7 @@ Enter the one you want and SAVE.
 If nothing saves, then press the DEFAULTS button to populate the default value, then change to your own.
 Sorry for the convoluted instructions, but this is the only way I could get it to save the Station ID properly.
 
-Note for Windows Users
-======================
+## Note for Windows Users
 If you upload from Windows you will get an error.
 Renaming the file to willyweather.txt will result in a successful upload.
 But... if you then reboot RainMachine you will lose the parser (sad face).
