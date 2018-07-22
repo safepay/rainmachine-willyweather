@@ -35,7 +35,7 @@ Select "Add New" and browse to the willyweather.py file and then upload.
 
 You then need to enter your WillyWeather API key.
 
-The hit REFRESH a few times and a list of closest stations should appear magically in the UI.
+Hit REFRESH a few times and a list of closest stations should appear magically in the UI.
 
 Enter the one you want and SAVE.
 
