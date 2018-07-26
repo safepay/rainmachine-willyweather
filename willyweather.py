@@ -31,7 +31,7 @@
 #
 # Select "Single Location" from the options.
 # Select "Observational" and "Forecasts" from the sub-menu under Weather.
-# This should give a $0.05 cost per 1000 requests.
+# This should give a $0.09 cost per 1000 requests.
 #
 # Enter your API key in the UI and Save, then Refresh.
 # In the UI, a list of nearby stations should appear, based on your
@@ -143,75 +143,92 @@ class WillyWeather(RMParser):
         log.debug("Finished running WillyWeather parser")
 
     def __getForecastData(self, forecast):
-        datetime = forecast["observational"]["issueDateTime"]
+        datetime = forecast["observational"].get("issueDateTime")
         obstimestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
-        ctimestamp = rmTimestampToUtcDateAsString(obstimestamp)
-        utctimestamp = rmTimestampFromDateAsString(ctimestamp, '%Y-%m-%d %H:%M:%S')
+        utcdatetime = rmTimestampToUtcDateAsString(obstimestamp)
+        utctimestamp = rmTimestampFromDateAsString(utcdatetime, '%Y-%m-%d %H:%M:%S')
+
+        otemp = forecast["observational"]["observations"]["temperature"].get("temperature")
+        orain = forecast["observational"]["observations"]["rainfall"].get("todayAmount")
+        ohumidity = forecast["observational"]["observations"]["humidity"].get("percentage")
+        odp = forecast["observational"]["observations"]["dewPoint"].get("temperature")
+        opressure = forecast["observational"]["observations"]["pressure"].get("pressure")
 
         if self.parserDebug:
-            log.info("Observational Date: %s" % rmTimestampToDateAsString(utctimestamp))
+            log.info("Current datetime:        %s" % datetime)
+            log.info("Current local timestamp: %s" % obstimestamp)
+            log.info("Current UTC:             %s" % utcdatetime)
+            log.info("Current UTC timestamp:   %s" % utctimestamp)
+            log.info("Current temp:     %s degrees C" % otemp)
+            log.info("Current rain:     %s mm today" % orain)
+            log.info("Current rel hum:  %s percent" % ohumidity)
+            log.info("Current dewpoint: %s degrees C" % odp)
+            log.info("Current pressure: %s kPa" % (opressure /10))
 
-        otemp = forecast["observational"]["observations"]["temperature"]["temperature"]
-        orain = forecast["observational"]["observations"]["rainfall"]["todayAmount"]
-
-        self.addValue(RMParser.dataType.TEMPERATURE, obstimestamp, otemp)
+        self.addValue(RMParser.dataType.TEMPERATURE, obstimestamp, str(round(otemp, 2)))
         self.addValue(RMParser.dataType.RAIN, obstimestamp, orain)
+        self.addValue(RMParser.dataType.RH, obstimestamp, ohumidity)
+        self.addValue(RMParser.dataType.DEWPOINT, obstimestamp, odp)
+        # Need to convery pressure from hPa to kPa
+        self.addValue(RMParser.dataType.PRESSURE, obstimestamp, str(opressure / 10))
 
         day = 0
+
         while day < self.noDays:
-            datetime = forecast["forecasts"]["weather"]["days"][day]["entries"][0]["dateTime"]
+            datetime = forecast["forecasts"]["weather"]["days"][day]["entries"][0].get("dateTime")
             timestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
-            ctimestamp = rmTimestampToUtcDateAsString(timestamp)
-            utctimestamp = rmTimestampFromDateAsString(ctimestamp, '%Y-%m-%d %H:%M:%S')
+            utcdatetime = rmTimestampToUtcDateAsString(timestamp)
+            utctimestamp = rmTimestampFromDateAsString(utcdatetime, '%Y-%m-%d %H:%M:%S')
 
             if self.parserDebug:
-                log.info("Forecast Date: %s" % rmTimestampToDateAsString(utctimestamp))
+                log.info("Forecast Date: %s" % rmTimestampToDateAsString(timestamp))
 
-            maxtemp = forecast["forecasts"]["weather"]["days"][day]["entries"][0]["max"]
-            mintemp = forecast["forecasts"]["weather"]["days"][day]["entries"][0]["min"]
+            maxtemp = forecast["forecasts"]["weather"]["days"][day]["entries"][0].get("max")
+            mintemp = forecast["forecasts"]["weather"]["days"][day]["entries"][0].get("min")
 
             for entry in forecast["forecasts"]["temperature"]["days"][day]["entries"]:
-                datetime = entry["dateTime"]
+                datetime = entry.get("dateTime")
                 timestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
-                ctimestamp = rmTimestampToUtcDateAsString(timestamp)
-                utctimestamp = rmTimestampFromDateAsString(ctimestamp, '%Y-%m-%d %H:%M:%S')
+                utcdatetime = rmTimestampToUtcDateAsString(timestamp)
+                utctimestamp = rmTimestampFromDateAsString(utcdatetime, '%Y-%m-%d %H:%M:%S')
 
-                temperature = entry["temperature"]
+                temperature = entry.get("temperature")
 
-                self.addValue(RMParser.dataType.TEMPERATURE, timestamp, temperature)
-                self.addValue(RMParser.dataType.MINTEMP, timestamp, mintemp)
-                self.addValue(RMParser.dataType.MAXTEMP, timestamp, maxtemp)
+                self.addValue(RMParser.dataType.TEMPERATURE, timestamp, str(round(temperature, 2)))
+                self.addValue(RMParser.dataType.MINTEMP, timestamp, str(round(mintemp, 2)))
+                self.addValue(RMParser.dataType.MAXTEMP, timestamp, str(round(maxtemp, 2)))
 
             for entry in forecast["forecasts"]["wind"]["days"][day]["entries"]:
-                datetime = entry["dateTime"]
+                datetime = entry.get("dateTime")
                 timestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
-                ctimestamp = rmTimestampToUtcDateAsString(timestamp)
-                utctimestamp = rmTimestampFromDateAsString(ctimestamp, '%Y-%m-%d %H:%M:%S')
+                utcdatetime = rmTimestampToUtcDateAsString(timestamp)
+                utctimestamp = rmTimestampFromDateAsString(utcdatetime, '%Y-%m-%d %H:%M:%S')
 
-                wind = entry["speed"]
+                wind = entry.get("speed")
 
-                self.addValue(RMParser.dataType.WIND, timestamp, wind)
+                self.addValue(RMParser.dataType.WIND, timestamp, str(round(wind, 2)))
 
             for entry in forecast["forecasts"]["rainfall"]["days"][day]["entries"]:
-                datetime = entry["dateTime"]
+                datetime = entry.get("dateTime")
                 timestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
-                ctimestamp = rmTimestampToUtcDateAsString(timestamp)
-                utctimestamp = rmTimestampFromDateAsString(ctimestamp, '%Y-%m-%d %H:%M:%S')
+                utcdatetime = rmTimestampToUtcDateAsString(timestamp)
+                utctimestamp = rmTimestampFromDateAsString(utcdatetime, '%Y-%m-%d %H:%M:%S')
 
-                rainfallmin = entry["startRange"]
-                rainfallmax = entry["endRange"]
+                rainfallmin = entry.get("startRange")
+                rainfallmax = entry.get("endRange")
                 rainfallavg = (self.__toFloat(rainfallmin) + self.__toFloat(rainfallmax))/2
 
                 self.addValue(RMParser.dataType.QPF, timestamp, rainfallavg)
 
-            if self.parserDebug:
-                log.debug(self.result)
 
             day += 1
 
+        if self.parserDebug:
+            log.debug(self.result)
+
     def getNearbyStations(self, jsonData):
         try:
-            nearestStation = jsonData["location"]["id"]
+            nearestStation = jsonData["location"].get("id")
         except:
             log.warning("No closest station found!")
             self.lastKnownError = "Warning: No closest station found!"
