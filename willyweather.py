@@ -54,7 +54,7 @@ class WillyWeather(RMParser):
     parserID = "willyweather"
     parserInterval = 6 * 3600
     parserEnabled = True
-    parserDebug = True
+    parserDebug = False
 
     params = {
               "apiKey": None,
