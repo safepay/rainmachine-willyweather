@@ -3,14 +3,12 @@ A parser for the RainMachine smart watering system using the API from www.willyw
 
 Note that I am not a professional (or even amateur!!) programmer.
 I wrote this because of the lack of local Australian support from the RainMachine system.
-However, the built in global parsers do a pretty good job.
+However, the built in global parsers do a pretty good job. I personally use this parser and the Open Weather Map parser with good results.
 
 The Willyweather service is a commercial API with the first 5000 calls free, then a cost based on the type of data you want to access.
 The typical cost is around $0.05 per 1000 calls for a single weather station, which is what the code is written to handle. But as the parser only runs 4 times per day, it will take about 3.4 years to use your 5000 freebies.
 
 If you have any suggestions or can clean up my code then thanks in advance!
-
-The main confusion I have is how RainMachine stores time. That is why the code has references to both local and UTC time, but I am logging with local so that my data matches that from services such as OpenWeatherMaps.
 
 ## Register for the Willyweather API
 Go to https://www.willyweather.com.au/info/api.html.
