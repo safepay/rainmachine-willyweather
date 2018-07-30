@@ -1,6 +1,6 @@
 # Copyright (c) 2018 Richard Mann
 # All rights reserved.
-# Author: Richard Mann <mann_rj@hotmail.com>
+# Author: Richard Mann <mannrj@outlook.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
