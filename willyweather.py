@@ -1,6 +1,6 @@
 # Copyright (c) 2018 Richard Mann
 # All rights reserved.
-# Author: Richard Mann
+# Author: Richard Mann <mann_rj@hotmail.com
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -37,6 +37,8 @@
 # In the UI, a list of nearby stations should appear, based on your
 # RainMachine latitude and longitude settings.
 #
+# Unticking stationLookUp will save 2 API calls once you are configured
+#
 # Enter the desired Station ID in the box and save the settings.
 
 from RMParserFramework.rmParser import RMParser
@@ -59,12 +61,14 @@ class WillyWeather(RMParser):
     params = {
               "apiKey": None,
               "stationID": None,
+              "stationLookUp": False,
               "_nearbyStationsIDList": []
               }
 
     defaultParams = {
               "apiKey": None,
               "stationID": 13960,
+              "stationLookUp": True,
               "_nearbyStationsIDList": []
               }
 
@@ -83,32 +87,33 @@ class WillyWeather(RMParser):
         self.params["_nearbyStationsIDList"] = []
         self.noDays = 7
 
-        s = self.settings
-        llat = s.location.latitude
-        llon = s.location.longitude
+        if self.params.get("stationLookUp"):
+            s = self.settings
+            llat = s.location.latitude
+            llon = s.location.longitude
 
-        searchURL = "https://api.willyweather.com.au/v2/" + self.apiKey + "/search.json"
-        searchURLParams = [
-            ("lat", llat),
-            ("lng", llon),
-            ("units", "distance:km")
-        ]
+            searchURL = "https://api.willyweather.com.au/v2/" + self.apiKey + "/search.json"
+            searchURLParams = [
+                ("lat", llat),
+                ("lng", llon),
+                ("units", "distance:km")
+            ]
 
-        try:
-            d = self.openURL(searchURL, searchURLParams)
-            if d is None:
-                return
+            try:
+                d = self.openURL(searchURL, searchURLParams)
+                if d is None:
+                    return
 
-            search = json.loads(d.read())
+                search = json.loads(d.read())
 
-            if self.parserDebug:
-                log.info(search)
+                if self.parserDebug:
+                    log.info(search)
 
-            self.getNearbyStations(search)
+                self.getNearbyStations(search)
 
-        except Exception, e:
-            log.error("*** Error finding nearby stations")
-            log.exception(e)
+            except Exception, e:
+                log.error("*** Error finding nearby stations")
+                log.exception(e)
 
         if self.stationID is None:
             self.lastKnownError = "Error: No Station ID entered."
