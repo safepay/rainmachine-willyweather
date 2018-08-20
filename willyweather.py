@@ -153,6 +153,8 @@ class WillyWeather(RMParser):
         utcdatetime = rmTimestampToUtcDateAsString(obstimestamp)
         utctimestamp = rmTimestampFromDateAsString(utcdatetime, '%Y-%m-%d %H:%M:%S')
 
+	obsstartofday = rmGetStartOfDay(obstimestamp)
+	
         otemp = forecast["observational"]["observations"]["temperature"].get("temperature")
         orain = forecast["observational"]["observations"]["rainfall"].get("todayAmount")
         ohumidity = forecast["observational"]["observations"]["humidity"].get("percentage")
@@ -170,12 +172,13 @@ class WillyWeather(RMParser):
             log.info("Current dewpoint: %s degrees C" % odp)
             log.info("Current pressure: %s kPa" % (opressure /10))
 
-        self.addValue(RMParser.dataType.TEMPERATURE, obstimestamp, str(round(otemp, 2)))
-        self.addValue(RMParser.dataType.RAIN, obstimestamp, orain)
-        self.addValue(RMParser.dataType.RH, obstimestamp, ohumidity)
-        self.addValue(RMParser.dataType.DEWPOINT, obstimestamp, odp)
+	# Changed to only record the observed rain for the whole day. The other data was not being consumed properly by RM.
+        # self.addValue(RMParser.dataType.TEMPERATURE, obstimestamp, str(round(otemp, 2)))
+        self.addValue(RMParser.dataType.RAIN, obsstartofday, orain)
+        # self.addValue(RMParser.dataType.RH, obsstartofday, ohumidity)
+        # self.addValue(RMParser.dataType.DEWPOINT, obsstartofday, odp)
         # Need to convery pressure from hPa to kPa
-        self.addValue(RMParser.dataType.PRESSURE, obstimestamp, str(opressure / 10))
+        # self.addValue(RMParser.dataType.PRESSURE, obsstartofday, str(opressure / 10))
 
         day = 0
 
