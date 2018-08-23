@@ -27,6 +27,8 @@ Complete the process with your own information, including your credit card.
 
 
 ## Installation
+Download the willyweather.py file from the repository using the RAW --> Save As function. Make sure it has the .py extension.
+
 In the RainMachine UI, go to Settings --> Weather --> User uploaded.
 
 Select "Add New" and browse to the willyweather.py file and then upload.
