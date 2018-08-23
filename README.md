@@ -39,7 +39,9 @@ Enter the one you want and SAVE.
 
 If nothing saves, then press the DEFAULTS button to populate the default value, then change to your own.
 
-Sorry for the convoluted instructions, but getting the Station ID to save was not straight forward.
+Once you have the system working with your chosen Station ID, you can set the flag "stationLookUp" off (false)
+to stop the parser making the two additional API calls for the search capability. This will save cost and leave
+a single API call every 4 hours to retrieve weather data.
 
 ## Note for Windows Users
 If you upload from Windows you will get an error.
