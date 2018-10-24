@@ -1,4 +1,4 @@
-# Rainmachine Willyweather Australia Parser
+# RainMachine Willyweather Australia Parser
 A parser for the RainMachine smart watering system using the API from www.willyweather.com.au which provides a commercial Json API for the Australian Bureau of Meteorology data.
 
 Note that I am not a professional (or even amateur!!) programmer.
@@ -50,4 +50,4 @@ If you upload from Windows you will get an error.
 Renaming the file to willyweather.txt will result in a successful upload.
 But... if you then reboot RainMachine you will lose the parser (sad face).
 
-You can only get this to work from a Linux or similar OS. This is a known bug in the Rainmachine UI.
+You can only get this to work from a Linux or similar OS. This is a known bug in the RainMachine UI.
