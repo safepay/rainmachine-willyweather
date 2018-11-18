@@ -222,9 +222,11 @@ class WillyWeather(RMParser):
 
                 rainfallmin = entry.get("startRange")
                 rainfallmax = entry.get("endRange")
+                rainfallprob = entry.get("probability")
                 rainfallavg = (self.__toFloat(rainfallmin) + self.__toFloat(rainfallmax))/2
 
                 self.addValue(RMParser.dataType.QPF, timestamp, rainfallavg)
+                self.addValue(RMParser.dataType.POP, timestamp, rainfallprob)
 
 
             day += 1
