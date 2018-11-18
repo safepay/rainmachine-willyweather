@@ -2,7 +2,7 @@
 A parser for the RainMachine smart watering system using the API from www.willyweather.com.au which provides a commercial Json API for the Australian Bureau of Meteorology data.
 
 I wrote this because of the lack of local Australian support from the RainMachine system.
-However, the built in global parsers do a pretty good job. I personally use this as my sole parser with good results. Most of the other parsers give conflicting local data. i would suggest trialing all the viable parsers and then using the ones with which you are most confident.
+However, the built in global parsers do a pretty good job. I personally use this as my sole parser with good results. Most of the other parsers give conflicting local data. I would suggest trialling all the viable parsers and then using the ones with which you are most confident.
 
 The Willyweather service, while being commercial, is very inexpensive, with the first 5000 calls free, then a cost based on the type of data you want to access.
 The typical cost is around $0.04 to $0.05 per 1000 calls for a single weather station, which is what the code is written to handle. But as the parser only runs 4 times per day, it will take about 3 years to use your 5000 freebies.
