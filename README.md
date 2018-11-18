@@ -1,14 +1,13 @@
 # RainMachine Willyweather Australia Parser
 A parser for the RainMachine smart watering system using the API from www.willyweather.com.au which provides a commercial Json API for the Australian Bureau of Meteorology data.
 
-Note that I am not a professional (or even amateur!!) programmer.
 I wrote this because of the lack of local Australian support from the RainMachine system.
-However, the built in global parsers do a pretty good job. I personally use this parser and the Open Weather Map parser with good results.
+However, the built in global parsers do a pretty good job. I personally use this as my sole parser with good results. Most of the other parsers give conflicting local data. i would suggest trialing all the viable parsers and then using the ones with which you are most confident.
 
-The Willyweather service is a commercial API with the first 5000 calls free, then a cost based on the type of data you want to access.
-The typical cost is around $0.05 per 1000 calls for a single weather station, which is what the code is written to handle. But as the parser only runs 4 times per day, it will take about 3.4 years to use your 5000 freebies.
+The Willyweather service, while being commercial, is very inexpensive, with the first 5000 calls free, then a cost based on the type of data you want to access.
+The typical cost is around $0.04 to $0.05 per 1000 calls for a single weather station, which is what the code is written to handle. But as the parser only runs 4 times per day, it will take about 3 years to use your 5000 freebies.
 
-If you have any suggestions or can clean up my code then thanks in advance!
+If you have any suggestions for changes or additions then please let me know.
 
 ## Register for the Willyweather API
 Go to https://www.willyweather.com.au/info/api.html.
@@ -43,11 +42,11 @@ If nothing saves, then press the DEFAULTS button to populate the default value, 
 
 Once you have the system working with your chosen Station ID, you can set the flag "stationLookUp" off (false)
 to stop the parser making the two additional API calls for the search capability. This will save cost and leave
-a single API call every 4 hours to retrieve weather data.
+a single API call every 4 hours, or when the device deems it necessary, to retrieve weather data.
 
 ## Note for Windows Users
 If you upload from Windows you will get an error.
 Renaming the file to willyweather.txt will result in a successful upload.
-But... if you then reboot RainMachine you will lose the parser (sad face).
+But... if you then reboot RainMachine you will lose the parser.
 
-You can only get this to work from a Linux or similar OS. This is a known bug in the RainMachine UI.
+You can only get this to work from a Linux or similar OS (I believe Macs work but I have not testing this). This is a known bug in the RainMachine UI.
