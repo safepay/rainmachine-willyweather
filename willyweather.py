@@ -191,6 +191,9 @@ class WillyWeather(RMParser):
 
             maxtemp = forecast["forecasts"]["weather"]["days"][day]["entries"][0].get("max")
             mintemp = forecast["forecasts"]["weather"]["days"][day]["entries"][0].get("min")
+            precis  = self.conditionConvert(forecast["forecasts"]["weather"]["days"][day]["entries"][0].get("precisCode"))
+
+            self.addValue(RMParser.dataType.CONDITION, timestamp, precis)
 
             for entry in forecast["forecasts"]["temperature"]["days"][day]["entries"]:
                 datetime = entry.get("dateTime")
@@ -227,7 +230,6 @@ class WillyWeather(RMParser):
 
                 self.addValue(RMParser.dataType.QPF, timestamp, rainfallavg)
                 self.addValue(RMParser.dataType.POP, timestamp, rainfallprob)
-
 
             day += 1
 
@@ -281,6 +283,67 @@ class WillyWeather(RMParser):
         if value is None:
             return 0
         return float(value)
+
+    def conditionConvert(self, precisCode):
+        if precisCode is None:
+            return RMParser.conditionType.Unknown
+
+        if precisCode == "cloudy":
+            return RMParser.conditionType.MostlyCloudy
+
+        if precisCode == "fine":
+            return  RMParser.conditionType.Fair
+
+        if precisCode == "mostly-fine":
+            return RMParser.conditionType.FewClouds
+
+        if precisCode == "partly-cloudy" or precisCode == "mostly-cloudy" or precisCode == "high-cloud":
+            return RMParser.conditionType.PartlyCloudy
+
+        if precisCode == "overcast":
+            return RMParser.conditionType.Overcast
+
+        if precisCode == "fog":
+            return RMParser.conditionType.Fog
+
+        if precisCode == "hail":
+            return RMParser.conditionType.IcePellets
+
+        if precisCode == "snow-and-rain":
+            return RMParser.conditionType.RainSnow
+
+        if precisCode == "showers-rain":
+            return RMParser.conditionType.RainShowers
+
+        if precisCode == "thunderstorm" or precisCode == "chance-thunderstorm-showers":
+            return RMParser.conditionType.Thunderstorm
+
+        if "snow" in precisCode:
+            return RMParser.conditionType.Snow
+
+        if precisCode == "wind":
+            return RMParser.conditionType.Windy
+
+        if precisCode == "chance-shower-fine" or precisCode == "shower-or-two" or precisCode == "chance-shower-cloud":
+            return RMParser.conditionType.ShowersInVicinity
+
+        if precisCode == "chance-thunderstorm-cloud" or precisCode == "chance-thunderstorm-fine":
+            return RMParser.conditionType.ThunderstormInVicinity
+
+        if precisCode == "drizzle" or precisCode == "few-showers":
+            return RMParser.conditionType.LightRain
+
+        if precisCode == "heavy-showers-rain":
+            return RMParser.conditionType.HeavyRain
+
+        if precisCode == "dust":
+            return RMParser.conditionType.Dust
+
+        if precisCode == "frost":
+            return RMParser.conditionType.Cold
+
+        return RMParser.conditionType.Unknown
+
 
 if __name__ == "__main__":
     parser = WillyWeather()
