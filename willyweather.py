@@ -150,41 +150,24 @@ class WillyWeather(RMParser):
     def __getForecastData(self, forecast):
         datetime = forecast["observational"].get("issueDateTime")
         obstimestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
-        # utcdatetime = rmTimestampToUtcDateAsString(obstimestamp)
-        # utctimestamp = rmTimestampFromDateAsString(utcdatetime, '%Y-%m-%d %H:%M:%S')
 
         obsstartofday = rmGetStartOfDayUtc(obstimestamp)
         obssoddatetime = rmTimestampToUtcDateAsString(obsstartofday)
 
-        otemp = forecast["observational"]["observations"]["temperature"].get("temperature")
         orain = forecast["observational"]["observations"]["rainfall"].get("todayAmount")
-        ohumidity = forecast["observational"]["observations"]["humidity"].get("percentage")
-        odp = forecast["observational"]["observations"]["dewPoint"].get("temperature")
-        opressure = forecast["observational"]["observations"]["pressure"].get("pressure")
 
         if self.parserDebug:
             log.info("Obs datetime:        %s" % datetime)
             log.info("Obs Start of Day:    %s" % obssoddatetime)
-            # log.info("Current temp:     %s degrees C" % otemp)
             log.info("Obs rain:            %s mm today" % orain)
-            # log.info("Current rel hum:  %s percent" % ohumidity)
-            # log.info("Current dewpoint: %s degrees C" % odp)
-            # log.info("Current pressure: %s kPa" % (opressure /10))
 
-        # self.addValue(RMParser.dataType.TEMPERATURE, obstimestamp, str(round(otemp, 2)))
         self.addValue(RMParser.dataType.RAIN, obsstartofday, orain)
-        # self.addValue(RMParser.dataType.RH, obstimestamp, ohumidity)
-        # self.addValue(RMParser.dataType.DEWPOINT, obstimestamp, odp)
-        # Need to convery pressure from hPa to kPa
-        # self.addValue(RMParser.dataType.PRESSURE, obstimestamp, str(opressure / 10))
 
         day = 0
 
         while day < self.noDays:
             datetime = forecast["forecasts"]["weather"]["days"][day]["entries"][0].get("dateTime")
             timestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
-            utcdatetime = rmTimestampToUtcDateAsString(timestamp)
-            utctimestamp = rmTimestampFromDateAsString(utcdatetime, '%Y-%m-%d %H:%M:%S')
 
             if self.parserDebug:
                 log.info("Forecast Date: %s" % rmTimestampToDateAsString(timestamp))
@@ -198,8 +181,6 @@ class WillyWeather(RMParser):
             for entry in forecast["forecasts"]["temperature"]["days"][day]["entries"]:
                 datetime = entry.get("dateTime")
                 timestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
-                utcdatetime = rmTimestampToUtcDateAsString(timestamp)
-                utctimestamp = rmTimestampFromDateAsString(utcdatetime, '%Y-%m-%d %H:%M:%S')
 
                 temperature = entry.get("temperature")
 
@@ -210,8 +191,6 @@ class WillyWeather(RMParser):
             for entry in forecast["forecasts"]["wind"]["days"][day]["entries"]:
                 datetime = entry.get("dateTime")
                 timestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
-                utcdatetime = rmTimestampToUtcDateAsString(timestamp)
-                utctimestamp = rmTimestampFromDateAsString(utcdatetime, '%Y-%m-%d %H:%M:%S')
 
                 wind = entry.get("speed")
 
@@ -220,8 +199,6 @@ class WillyWeather(RMParser):
             for entry in forecast["forecasts"]["rainfall"]["days"][day]["entries"]:
                 datetime = entry.get("dateTime")
                 timestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
-                utcdatetime = rmTimestampToUtcDateAsString(timestamp)
-                utctimestamp = rmTimestampFromDateAsString(utcdatetime, '%Y-%m-%d %H:%M:%S')
 
                 rainfallmin = entry.get("startRange")
                 rainfallmax = entry.get("endRange")
