@@ -49,4 +49,4 @@ If you upload from Windows you will get an error.
 Renaming the file to willyweather.txt will result in a successful upload.
 But... if you then reboot RainMachine you will lose the parser.
 
-You can only get this to work from a Linux or similar OS (I believe Macs work but I have not testing this). This is a known bug in the RainMachine UI.
+You can only get this to work from a Linux or similar OS (I believe Macs work but I have not tested this). This is a known bug in the RainMachine UI.
