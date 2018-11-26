@@ -9,6 +9,13 @@ The typical cost is around $0.04 to $0.05 per 1000 calls for a single weather st
 
 If you have any suggestions for changes or additions then please let me know.
 
+## Parser Features
+* Search for nearby weather data and provide station ID
+* Entry of preferrred local station ID
+* Extracts forecast rain quantity and probability, high/low temperatures and wind data
+* Maps precis forecast code (E.g. "showers") to a RainMachine home screen icon
+
+# Installation
 ## Register for the Willyweather API
 Go to https://www.willyweather.com.au/info/api.html.
 
