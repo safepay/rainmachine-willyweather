@@ -12,8 +12,14 @@ If you have any suggestions for changes or additions then please let me know.
 ## Parser Features
 * Search for nearby weather data and provide station ID
 * Entry of preferrred local station ID
-* Extracts forecast rain quantity and probability, high/low temperatures and wind data
-* Maps precis forecast code (E.g. "showers") to a RainMachine home screen icon
+* Supports the following forecast data:
+** Rain amount
+** Rain probability
+** High/low temperatures
+** Hourly temperature
+** Hourly wind
+* Provides total rainfall for previous day
+* Supports home screen weather icons
 
 # Installation
 ## Register for the Willyweather API
