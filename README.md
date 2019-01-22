@@ -13,11 +13,11 @@ If you have any suggestions for changes or additions then please let me know.
 * Search for nearby weather data and provide station ID
 * Entry of preferrred local station ID
 * Supports the following forecast data:
-** Rain amount
-** Rain probability
-** High/low temperatures
-** Hourly temperature
-** Hourly wind
+  * Rain amount
+  * Rain probability
+  * High/low temperatures
+  * Hourly temperature
+  * Hourly wind
 * Provides total rainfall for previous day
 * Supports home screen weather icons
 
