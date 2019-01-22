@@ -1,7 +1,7 @@
 # RainMachine Australian Bureau of Meteorology Parser
-A parser for the RainMachine smart watering system using the API from www.willyweather.com.au which provides a commercial Json API for the Australian Bureau of Meteorology data.
+A parser for the RainMachine smart watering system using the API from www.willyweather.com.au which provides a commercial Json API for  Australian Bureau of Meteorology data.
 
-I wrote this because of the lack of local Australian support from the RainMachine system.
+I wrote this due to lack of local Australian support from the RainMachine system.
 However, the built in global parsers do a pretty good job. I personally use this as my sole parser with good results. Most of the other parsers give conflicting local data. I would suggest trialling all the viable parsers and then using the ones with which you are most confident.
 
 The Willyweather service, while being commercial, is very inexpensive, with the first 5000 calls free, then a cost based on the type of data you want to access.
