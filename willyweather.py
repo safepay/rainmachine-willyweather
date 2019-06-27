@@ -184,9 +184,9 @@ class WillyWeather(RMParser):
 
                 temperature = entry.get("temperature")
 
-                self.addValue(RMParser.dataType.TEMPERATURE, timestamp, str(round(temperature, 2)))
-                self.addValue(RMParser.dataType.MINTEMP, timestamp, str(round(mintemp, 2)))
-                self.addValue(RMParser.dataType.MAXTEMP, timestamp, str(round(maxtemp, 2)))
+                self.addValue(RMParser.dataType.TEMPERATURE, timestamp, round(temperature, 2))
+                self.addValue(RMParser.dataType.MINTEMP, timestamp, round(mintemp, 2))
+                self.addValue(RMParser.dataType.MAXTEMP, timestamp, round(maxtemp, 2))
 
             for entry in forecast["forecasts"]["wind"]["days"][day]["entries"]:
                 datetime = entry.get("dateTime")
@@ -194,7 +194,7 @@ class WillyWeather(RMParser):
 
                 wind = entry.get("speed")
 
-                self.addValue(RMParser.dataType.WIND, timestamp, str(round(wind, 2)))
+                self.addValue(RMParser.dataType.WIND, timestamp, round(wind, 2))
 
             for entry in forecast["forecasts"]["rainfall"]["days"][day]["entries"]:
                 datetime = entry.get("dateTime")
@@ -287,7 +287,7 @@ class WillyWeather(RMParser):
             return RMParser.conditionType.IcePellets
 
         if precisCode == "snow-and-rain":
-            return RMParser.conditionType.RainSnow
+            return RMParser.conditionType.RainSnowFix
 
         if precisCode == "showers-rain":
             return RMParser.conditionType.RainShowers
