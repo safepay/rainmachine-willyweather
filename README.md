@@ -37,7 +37,7 @@ Select "Show sub-items" next to "Forecasts" to reveal the sub-menu.
 
 Tick "Weather", "Temperature", "Wind" and "Rainfall" and click "Next".
 
-![API Settings Screenshot](https://github.com/safepay/rainmachine-willyweather/raw/master/willyweather_api_settings.png)
+![API Settings Screenshot](https://github.com/safepay/rainmachine-willyweather/raw/master/api_settings.png)
 
 Complete the process with your own information, including your credit card.
 
