@@ -24,7 +24,7 @@ If you have any suggestions for changes or additions then please let me know.
 * Supports home screen weather icons
 
 # Installation
-## Obtain an API Key fron Willyweather
+## Obtain an API Key from Willyweather
 Go to https://www.willyweather.com.au/info/api.html.
 
 Select "Single Location" and click "Next".
