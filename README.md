@@ -41,6 +41,8 @@ Tick "Weather", "Temperature", "Wind" and "Rainfall" and click "Next".
 
 Complete the process with your own information, including your credit card.
 
+There will now be an API Key on the API Admin page that you can use with RainMachine.
+
 ## Install and Configure RainMachine Parser
 Download the willyweather.py file from the repository.
 
