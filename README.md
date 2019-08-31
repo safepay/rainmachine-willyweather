@@ -24,7 +24,7 @@ If you have any suggestions for changes or additions then please let me know.
 * Supports home screen weather icons
 
 # Installation
-## Register for the Willyweather API
+## Obtain an API Key fron Willyweather
 Go to https://www.willyweather.com.au/info/api.html.
 
 Select "Single Location" and click "Next".
@@ -41,7 +41,7 @@ Tick "Weather", "Temperature", "Wind" and "Rainfall" and click "Next".
 
 Complete the process with your own information, including your credit card.
 
-## Installation
+## Install and Configure RainMachine Parser
 Download the willyweather.py file from the repository.
 
 In the RainMachine UI, go to Settings --> Weather --> User uploaded.
