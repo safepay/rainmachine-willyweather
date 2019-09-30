@@ -56,7 +56,7 @@ Hit REFRESH a few times and a list of closest stations should appear magically i
 
 Enter the one you want and SAVE.
 
-If nothing saves, then press the DEFAULTS button to populate the default value, then change to your own.
+If nothing saves, then press the DEFAULTS button to populate the default value, then change to your own. (This is not a bug, but the odd behaviour of RainMachine for database storage of variables.)
 
 Once you have the system working with your chosen Station ID, you can set the flag "stationLookUp" off (false)
 to stop the parser making the two additional API calls for the search capability. This will save cost and leave
