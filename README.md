@@ -56,11 +56,16 @@ Hit REFRESH a few times and a list of closest stations should appear magically i
 
 Enter the one you want and SAVE.
 
-If nothing saves, then press the DEFAULTS button to populate the default value, then change to your own. (This is not a bug, but the odd behaviour of RainMachine for database storage of variables.)
-
 Once you have the system working with your chosen Station ID, you can set the flag "stationLookUp" off (false)
 to stop the parser making the two additional API calls for the search capability. This will save cost and leave
 a single API call every 4 hours, or when the device deems it necessary, to retrieve weather data.
+
+## Troubleshooting if Station ID or API Key Won't Save
+Sometimes RainMachine refuses to save the values for Station ID and/or API Key. This is not a parser bug, but a limitation of RainMachine.
+
+If this happens, press the DEFAULTS button to populate the default values, then change to your own values and Save again. This should solve the problem. You may still need to do this more than once.
+
+There is no fix for this from RainMachine.
 
 ## Note for Windows Users
 If you upload from Windows you will get an error.
