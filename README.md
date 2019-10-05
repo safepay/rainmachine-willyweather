@@ -52,9 +52,11 @@ Select "Add New" and browse to the willyweather.py file and then upload.
 
 You then need to enter your WillyWeather API key.
 
-Hit REFRESH a few times and a list of closest stations should appear magically in the UI.
+Hit REFRESH and a list of closest stations should appear magically in the UI.
 
 Enter the one you want and SAVE.
+
+**Note: Once you REFRESH, RainMaching does not allow another refresh for 5 minutes, so please be patient with these steps.**
 
 Once you have the system working with your chosen Station ID, you can set the flag "stationLookUp" off (false)
 to stop the parser making the two additional API calls for the search capability. This will save cost and leave
