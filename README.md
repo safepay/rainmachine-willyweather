@@ -69,6 +69,17 @@ If this happens, press the DEFAULTS button to populate the default values, then 
 
 There is no fix for this from RainMachine.
 
+## Troubleshooting if you can't find your station ID
+If you have somehow gotten to a point where you can't find your station ID, you can get it from the page source of WillyWeather.
+Just go to your location in WillyWeather. E.g. https://www.willyweather.com.au/vic/melbourne/melbourne.html
+
+Then in your browser view the source (usually by right-clicking on the page).
+
+Then search for ```ww.location```. This is quite close to the top of the source, so you can also scroll down.
+You will see a number next to the ID field. E.g. ```ww.location = {"id":13960,"name":"Melbourne"``` give a Station ID of ```13960```.
+
+Enter this number in to RainMachine.
+
 ## Note for Windows Users
 If you upload from Windows you will get an error.
 Renaming the file to willyweather.txt will result in a successful upload.
