@@ -50,11 +50,15 @@ In the RainMachine UI, go to Settings --> Weather --> User uploaded.
 
 Select "Add New" and browse to the willyweather.py file and then upload.
 
-You then need to enter your WillyWeather API key.
+Click on the new parser to show the configuration items.
+
+Press the DEFAULTS option to populate a temporary Station ID and to tick the LookUp Station Box.
+
+Enter your WillyWeather API key and Save.
 
 Hit REFRESH and a list of closest stations should appear magically in the UI.
 
-Enter the one you want and SAVE.
+Enter the one you want and SAVE again.
 
 **Note: Once you REFRESH, RainMaching does not allow another refresh for 5 minutes, so please be patient with these steps.**
 
