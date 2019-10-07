@@ -80,7 +80,7 @@ Just go to your location in WillyWeather. E.g. https://www.willyweather.com.au/v
 Then in your browser view the source (usually by right-clicking on the page).
 
 Then search for ```ww.location```. This is quite close to the top of the source, so you can also scroll down.
-You will see a number next to the ID field. E.g. ```ww.location = {"id":13960,"name":"Melbourne"``` give a Station ID of ```13960```.
+You will see a number next to the ID field. E.g. ```ww.location = {"id":13960,"name":"Melbourne"``` gives a Station ID of ```13960```.
 
 Enter this number in to RainMachine.
 
