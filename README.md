@@ -60,7 +60,7 @@ Hit REFRESH and a list of closest stations should appear magically in the UI.
 
 Enter the one you want and SAVE again.
 
-**Note: Once you REFRESH, RainMaching does not allow another refresh for 5 minutes, so please be patient with these steps.**
+**Note: Once you REFRESH, RainMachine does not allow another refresh for 5 minutes, so please be patient with these steps.**
 
 Once you have the system working with your chosen Station ID, you can set the flag "stationLookUp" off (false)
 to stop the parser making the two additional API calls for the search capability. This will save cost and leave
