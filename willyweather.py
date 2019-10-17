@@ -52,7 +52,7 @@ class WillyWeather(RMParser):
     parserName = "WillyWeather Australia Parser"
     parserDescription = "Australian weather service from https://www.willyweather.com.au"
     parserForecast = True
-    parserHistorical = False
+    parserHistorical = True
     parserID = "willyweather"
     parserInterval = 6 * 3600
     parserEnabled = True
