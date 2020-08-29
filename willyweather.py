@@ -52,7 +52,8 @@ class WillyWeather(RMParser):
     parserName = "WillyWeather Australia Parser"
     parserDescription = "Australian weather service from https://www.willyweather.com.au"
     parserForecast = True
-    parserHistorical = True
+    # parserHistorical = True
+    parserHistorical = False
     parserID = "willyweather"
     parserInterval = 6 * 3600
     parserEnabled = True
@@ -121,8 +122,14 @@ class WillyWeather(RMParser):
 
         URL = "https://api.willyweather.com.au/v2/" + self.apiKey + "/locations/" + str(self.stationID) + "/weather.json"
 
+        # URLParams = [
+        #    ("observational", "true"),
+        #    ("forecasts", "weather,temperature,rainfall,wind"),
+        #    ("days", self.noDays),
+        #    {"units", "speed:m/s"}
+        #]
+
         URLParams = [
-            ("observational", "true"),
             ("forecasts", "weather,temperature,rainfall,wind"),
             ("days", self.noDays),
             {"units", "speed:m/s"}
@@ -148,20 +155,21 @@ class WillyWeather(RMParser):
         log.debug("Finished running WillyWeather parser")
 
     def __getForecastData(self, forecast):
-        datetime = forecast["observational"].get("issueDateTime")
-        obstimestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
+        # datetime = forecast["observational"].get("issueDateTime")
+        # obstimestamp = rmTimestampFromDateAsString(datetime, '%Y-%m-%d %H:%M:%S')
 
-        obsstartofday = rmGetStartOfDayUtc(obstimestamp)
-        obssoddatetime = rmTimestampToUtcDateAsString(obsstartofday)
+        # obsstartofday = rmGetStartOfDayUtc(obstimestamp)
+        # obssoddatetime = rmTimestampToUtcDateAsString(obsstartofday)
 
-        orain = forecast["observational"]["observations"]["rainfall"].get("todayAmount")
+        # orain = forecast["observational"]["observations"]["rainfall"].get("todayAmount")
 
-        if self.parserDebug:
-            log.info("Obs datetime:        %s" % datetime)
-            log.info("Obs Start of Day:    %s" % obssoddatetime)
-            log.info("Obs rain:            %s mm today" % orain)
+        # if self.parserDebug:
+        #    log.info("Obs datetime:        %s" % datetime)
+        #    log.info("Obs Start of Day:    %s" % obssoddatetime)
+        #    log.info("Obs rain:            %s mm today" % orain)
 
-        self.addValue(RMParser.dataType.RAIN, obsstartofday, orain)
+        # remove Observational as rain amount is too low and impacting RainMachine algorithm
+        # self.addValue(RMParser.dataType.RAIN, obsstartofday, orain)
 
         day = 0
 
