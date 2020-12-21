@@ -83,10 +83,3 @@ Then search for ```ww.location```. This is quite close to the top of the source,
 You will see a number next to the ID field. E.g. ```ww.location = {"id":13960,"name":"Melbourne"``` gives a Station ID of ```13960```.
 
 Enter this number in to RainMachine.
-
-## Note for Windows Users
-If you upload from Windows you will get an error.
-Renaming the file to willyweather.txt will result in a successful upload.
-But... if you then reboot RainMachine you will lose the parser.
-
-You can only get this to work from a Linux or similar OS (I believe Macs work but I have not tested this). This is a known bug in the RainMachine UI.
