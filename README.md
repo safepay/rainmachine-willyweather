@@ -1,6 +1,9 @@
 [![willyweather](https://img.shields.io/github/release/safepay/rainmachine-willyweather.svg)](https://github.com/safepay/rainmachine-willyweather) ![Maintenance](https://img.shields.io/maintenance/yes/2021.svg)
 
 # RainMachine Australian Bureau of Meteorology Parser
+
+**January 2023: Note that I no longer own a RainMachine, since mine died, therefore this repository is no longer maintained and is looking for a new home.**
+
 A parser for the RainMachine smart watering system using the API from www.willyweather.com.au which provides a commercial Json API for  Australian Bureau of Meteorology data.
 
 I wrote this due to lack of local Australian support from the RainMachine system.
